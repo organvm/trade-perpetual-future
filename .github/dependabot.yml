@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directories:
+      - "/"
+      - "/workers/api"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    groups:
+      npm-deps:
+        patterns: ["*"]
+  - package-ecosystem: "pip"
+    directories:
+      - "/scripts/video_production"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    groups:
+      pip-deps:
+        patterns: ["*"]
+  - package-ecosystem: "github-actions"
+    directories:
+      - "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    groups:
+      github-actions-deps:
+        patterns: ["*"]
