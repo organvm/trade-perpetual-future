@@ -1,16 +1,16 @@
 # Video Production Agent Dependencies
 # Text-to-Speech
-pyttsx3==2.90
-gtts==2.5.1
+pyttsx3==2.99
+gtts==2.5.4
 
 # Browser Automation
-playwright==1.49.0
+playwright==1.60.0
 
 # Image Processing
-Pillow==10.4.0
+Pillow==12.2.0
 
 # Video Processing (wrapper for FFmpeg)
-moviepy==1.0.3
+moviepy==2.2.1
 
 # Utilities
-python-dotenv==1.0.1
+python-dotenv==1.2.2
