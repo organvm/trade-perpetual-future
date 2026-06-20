@@ -13,6 +13,7 @@ export function useDriftMarkets(driftClient: DriftClientLike | null) {
   const [markets, setMarkets] = useState<SimMarket[]>([])
   const [isLive, setIsLive] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const latestMarkets = useRef<SimMarket[]>([])
   const sessionHighs = useRef<Map<string, number>>(new Map())
   const sessionLows = useRef<Map<string, number>>(new Map())
 
@@ -73,7 +74,7 @@ export function useDriftMarkets(driftClient: DriftClientLike | null) {
           }
 
           // Find existing market to append history
-          const existingMarket = markets.find(m => m.symbol === def.name)
+          const existingMarket = latestMarkets.current.find(m => m.symbol === def.name)
           const priceHistory = existingMarket
             ? [...existingMarket.priceHistory, newPoint].slice(-100)
             : [newPoint]
@@ -93,6 +94,7 @@ export function useDriftMarkets(driftClient: DriftClientLike | null) {
           }
         })
 
+        latestMarkets.current = updated
         setMarkets(updated)
         setIsLive(true)
         setError(null)
